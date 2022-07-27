@@ -28,6 +28,7 @@ for entry in `ls -aA $XORG_DIR`; do
 
 		echo "" | sudo tee -a $dest >/dev/null
 		echo "$(cat $src)" | sudo tee -a $dest >/dev/null
+		echo "" | sudo tee -a $dest >/dev/null
 	fi
 done
 
