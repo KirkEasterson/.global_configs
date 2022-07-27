@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 # name of directory that this script is in, so it can be run from anywhere
 LIGHTDM_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
