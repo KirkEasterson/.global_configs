@@ -1,11 +1,17 @@
 #!/bin/bash
 
+# check for root permissions
+if [[ $(/usr/bin/id -u) -ne 0 ]]; then
+    echo "Not running as root"
+    exit
+fi
+
 # name of directory that this script is in, so it can be run from anywhere
 SD_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # add name of script dynamically in case the name is changed
 SCRIPT_NAME=(`basename "$0"`)
-sudo mkdir -p /etc/systemd/logind.conf.d/
+mkdir -p /etc/systemd/logind.conf.d/
 
 # iterate through all files in this directory
 for entry in `ls -aA $SD_DIR`; do
@@ -23,11 +29,11 @@ for entry in `ls -aA $SD_DIR`; do
 
 		# if dest doesn't exist, create it
 		if [ ! -f "$dest" ]; then
-			sudo touch $dest
+			touch $dest
 		fi
 
-		echo "" | sudo tee -a $dest >/dev/null
-		echo "$(cat $src)" | sudo tee -a $dest >/dev/null
-		echo "" | sudo tee -a $dest >/dev/null
+		echo "" | tee -a $dest >/dev/null
+		echo "$(cat $src)" | tee -a $dest >/dev/null
+		echo "" | tee -a $dest >/dev/null
 	fi
 done
