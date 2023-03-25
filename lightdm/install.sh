@@ -11,3 +11,4 @@ sudo mkdir -p /etc/lightdm/
 
 # copy the slick greeter config
 sudo cp $LIGHTDM_DIR/slick-greeter.conf /etc/lightdm/slick-greeter.conf
+sudo cp $LIGHTDM_DIR/lightdm.conf /etc/lightdm/lightdm.conf
